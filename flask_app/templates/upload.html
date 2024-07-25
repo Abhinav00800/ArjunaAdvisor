@@ -1,0 +1,96 @@
+<!-- templates/upload.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Query</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+        }
+        h1, h2 {
+            text-align: center;
+            font-weight: 700;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        input[type="text"], input[type="file"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 80%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #2575fc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #237ab0;
+            box-shadow: 0px 0px 5px rgb(35, 111, 181) ;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>What's on your mind</h1>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <label for="file">Select a PDF file:</label>
+            <input type="file" id="file" name="file" accept=".pdf"><br>
+            <label for="question">Type your question:</label>
+            <input type="text" id="question" name="question" required><br>
+            <input type="submit" value="Submit">
+        </form>
+        {% if response %}
+        <h2>Response:</h2>
+        <pre>{{ response }}</pre>
+        {% endif %}
+    </div>
+</body>
+</html>
